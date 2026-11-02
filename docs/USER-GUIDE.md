@@ -361,7 +361,10 @@ print. Turn it down, or turn **Ink** down.
   would show the room. A second large, dim lamp would fix it; there isn't one yet.
 - **The card is flat** and the frame is the card, so the art window is fixed in the frame rather
   than found in the clip.
-- **No presets.** The recipes above are the nearest thing.
+- **No presets.** The recipes above are the nearest thing. The
+  [browser demo](https://holofoil-demo.stoatworks-labs.com/) has them in its Presets menu, to try
+  before installing: the plugin's own shaders with every control, but a browser, not Resolume,
+  and it says what it leaves out.
 - **Never loaded into Resolume on macOS**, and not compared against a real foil card.
 
 ---

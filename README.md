@@ -190,6 +190,17 @@ At 1080p every pattern is under 0.3 ms, and automating Groove Depth costs 0.57 m
 - **Patterns are point-sampled.** A crosshatch at its natural scale is about 8 px a period at 720 wide and aliases on smaller rasters. Raise Pattern Scale there.
 - **Light comes from one lamp, with no room around it.** A mostly-mirror foil, such as cold foil, shows nothing away from the lamp's reflection.
 
+## Browser demo
+
+**<https://holofoil-demo.stoatworks-labs.com/>**: every finish and pattern, every control with
+its own name, group and default, over the harness's trading card or the fleet's test clips. The
+shaders are the plugin's own GLSL, spliced unedited (`demo/tools/check_shaders.py`, run by
+`tools/verify.sh`); the CPU half (the controls, the card's frame, the lamp and the motion) is a
+JavaScript port, and `demo/tools/crosscheck/` renders it and `hftest` over the same frames: in
+fourteen cases covering every Foil Area, Pattern and Motion, at three rasters, every pixel is
+within one level of the plugin's and at least 99.997% are identical. It is a demo, not the
+plugin, and says what it leaves out.
+
 ## Build
 
 macOS, universal (Apple Silicon and Intel):

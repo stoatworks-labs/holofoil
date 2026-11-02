@@ -196,10 +196,61 @@ The first full run, 2026-11-02, caught 28 of 29. The survivor:
 
 The weakest live controls are Motion Rate (0.15 mean 8-bit at 320×180), Corner (0.18, swept 0 to 1) and Softness (0.24). Every other control moves the picture by at least 0.59.
 
+## The browser demo (2026-11-02)
+
+`demo/` is <https://holofoil-demo.stoatworks-labs.com>, built to the fleet's `resolume-demo`
+kit rules (`~/Projects/resolume/specs/DEMO-BRIEF.md`), from slitscan's. What a reader of it
+must know:
+
+- **The shaders are the plugin's**: kQuadVertex, kCommon and the table and foil fragments,
+  plus kVersion, spliced by `demo/tools/check_shaders.py --write` into `demo/shaders.js` and
+  compared character for character, with the JOIN on both sides (`Assemble( Pass )`, InitGL's
+  vertex and two fragment stages, plugin.js's copy). Both programs compile and link in WebGL2
+  as spliced: nothing needed `port()` beyond its version and precision lines. `tools/verify.sh`
+  runs the check.
+- **The CPU half is a port**: Controls.cpp and Card.cpp in full, and the colour matrix (between
+  the PORT markers in `demo/plugin.js`), and the CPU half of Holofoil.cpp -- SetFloatParameter,
+  ProcessOpenGL and ensureTable (between the FRAME markers). Change those and you change the
+  port too. Not ported: the clock-unit vote (the page's clock is seconds) and the
+  negative-control setters (Hooks stays 0).
+- **The same table**: 2048 × 129 RGBA32F, linear-filtered, rebuilt only when Groove Depth
+  changes. Linear filtering of a float texture needs OES_texture_float_linear; without it the
+  page builds the table RGBA16F and says so in its status line. The crosscheck measures that
+  fallback too (below).
+- **The card is the harness's.** `hftest`'s `buildCard` is ported to GLSL in plugin.js and
+  pushed onto the kit's clip list as "Trading card", the default; the fleet's clips follow.
+- **No host tempo**: Motion Sync's Beat and Bar run on the plugin's own 120 BPM.
+- **The page's own `differences` list says all of this on the page.** Keep it true.
+
+How it was verified, and how to again (it needs this Mac's GPU and Chrome, so verify.sh does
+not run it):
+
+- `demo/tools/crosscheck/crosscheck.py [--size 1280x720]` (after verify.sh, or
+  `cmake --build build-verify --target hftest`): the harness's card, 60 frames at 60 fps,
+  taken from the plugin at Mix 0 (`hftest --film 60 --set Mix=0`), fed to
+  `hftest --pipe --bpm 0` and to the page through `window.holofoilDemo.renderCase` (a fresh
+  instance on the same clock) in headless Chrome, the last frame compared. It first checks
+  that the page's 31 controls are `hftest --list`'s, names, kinds and defaults, in order.
+  Fourteen cases: the defaults; holo, reverse and cosmos held at Tilt Y +5°, and holo at
+  +10°; full-card sparkle, cracked ice, the square crosshatch, cold foil and etched (the
+  README's finishes); Lamp Orbit on the beat over the whole card; a near eye and lamp swinging
+  on Dark Ink; the Circle motion through a moved, rounded, feathered window at Mix 0.6; and a
+  crosshatch keyed on the clip's alpha at a 220 nm groove, where the mirror turns magenta. A case passes with 99.9% of pixels within one level of 255 and none more than
+  four off.
+- 2 November 2026, M4 Max, Chrome 156 through ANGLE on Metal, at 640 × 360, 1280 × 720 and
+  720 × 1008: every case has every pixel within one level and at least 99.997% identical. The
+  two negative controls are caught at every raster: the page one frame late (up to 108 levels
+  off) and the card tipped 0.08° further (82% within one level). The RGBA16F table, on the
+  defaults and full-card sparkle, is still every pixel within one level (99.79–99.96%
+  identical). No other GPU or browser has been compared.
+- Deployment: the Worker `holofoil-demo` serves `demo/` on a route in the stoatworks-labs.com
+  zone (the zone is at its custom-domain limit), behind a proxied `AAAA 100::` record
+  `holofoil-demo`. `cf-run npx wrangler deploy` from the repo root; no workflow deploys it.
+
 ## Not done
 
 - **Never loaded into Resolume on macOS.** On Windows, only on software rendering (win-lab).
-- **No presets or browser demo.**
+- **No presets.** The browser demo's Presets menu is the page's own, built from the README's finishes.
 - **Not modelled:**
   - thin-film iridescence
   - polarisation

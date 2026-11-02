@@ -74,7 +74,14 @@ Read `AGENTS.md` before changing the optics, the colour table, the lamp's covari
 
 ## Not done yet
 
-- Never loaded into Resolume on macOS. On Windows the fleet's Arena gate passes on Arena 7.27.1 (plugin-bench, `arena/expect/holofoil.json`). No presets or demo.
+- Never loaded into Resolume on macOS. On Windows the fleet's Arena gate passes on Arena 7.27.1 (plugin-bench, `arena/expect/holofoil.json`). No presets.
+
+## Browser demo
+
+- `demo/` is <https://holofoil-demo.stoatworks-labs.com>, deployed by hand from the repo root with `cf-run npx wrangler deploy` (a route, not a custom domain: `wrangler.toml`). There is no deploy workflow.
+- After a shader edit: `python3 demo/tools/check_shaders.py --write` (verify.sh fails on drift).
+- Locally: `python3 -m http.server -d demo`, or `npx wrangler dev` for the real `_headers`.
+- Against the plugin: `python3 demo/tools/crosscheck/crosscheck.py` (needs `build-verify/hftest`, Chrome and a GPU). AGENTS.md has the gaps and the last figures.
 
 ## Diagnostics
 

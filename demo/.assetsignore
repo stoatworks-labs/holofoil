@@ -1,0 +1,6 @@
+# Not part of the page. tools/ holds check_shaders.py, the check that the
+# demo's shader copies still match the plugin's and the script that splices
+# them, and crosscheck/, which compares this page with the plugin's harness;
+# wrangler would otherwise upload it and serve it, which is neither useful nor
+# anybody's business.
+tools/
