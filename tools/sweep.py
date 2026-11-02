@@ -80,7 +80,6 @@ SWEEP = {
 }
 
 # The About block: a text line and browser buttons, with no pixel to sweep.
-# Unpublished, the block has the text line and Support the work alone.
 SKIP = {"About", "Project page", "Source on GitHub", "Support the work", "User guide"}
 
 

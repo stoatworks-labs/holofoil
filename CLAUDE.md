@@ -70,7 +70,7 @@ Read `AGENTS.md` before changing the optics, the colour table, the lamp's covari
 - **`holofoil_core` is an OBJECT library:** the plugin registers itself from a file-scope constructor that nothing references.
 - **The macOS build must be universal.** Check with `lipo`, never the build log.
 - **No trademarks** in the plugin's name, labels, options or any future preset names.
-- **`source/StoatworksAbout.h` is hand-written** while the plugin is unpublished. At release it should come from the backend's `scripts/sync-about.py`, and `ATTRIBUTIONS.md` from `scripts/sync-attributions.py`.
+- **Generated files:** `source/StoatworksAbout.h` (backend `scripts/sync-about.py`), `ATTRIBUTIONS.md` (`scripts/sync-attributions.py`), `.github/ISSUE_TEMPLATE/` (`scripts/sync-issue-templates.py`) and `scripts/release-lib.sh` (the backend's `release/`). Edit them there, never here.
 
 ## Not done yet
 

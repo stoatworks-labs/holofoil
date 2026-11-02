@@ -2,7 +2,7 @@
 
 > **AI-assisted project.** This codebase was created with [Claude](https://claude.com/claude-code) (Anthropic), directed and reviewed by a human author. Its behaviour is measured rather than asserted. An offline harness drives the plugin's own class in a headless GL context and checks each claim against an independent model.
 >
-> - **Colour:** every pixel's light matches a wavelength-by-wavelength sum of the grating equation through the CIE colour matching functions, within 0.33 % of the brightest. Its dominant wavelength is the grating's, within 0.83 of a bound derived for it.
+> - **Colour:** every pixel's light matches a wavelength-by-wavelength sum of the grating equation through the CIE colour matching functions, within 0.18 % of the brightest. Its dominant wavelength is the grating's, within 0.83 of a bound derived for it.
 > - **Areas and passthrough:** a reverse holo is the exact complement of a holo. At zero Mix the clip comes through bit for bit.
 > - **The checks can fail:** 17 negative controls and 29 one-character mutants show it.
 >
@@ -107,7 +107,7 @@ The harness's reference never uses the plugin's table, its spectral lines or its
 
 | check | result |
 | --- | --- |
-| `--grating` | Five scenes: a far lamp overhead, a turned card, a near lamp, the second order alone, and the defaults' strip lamp with roughness. Each pixel's light against the per-wavelength sum is worst **2.4e-3** of the brightest (bound 1e-2). Its dominant wavelength against *d*·\|s·g\|/*m* over 470–600 nm is worst **0.83** of a bound that grows with the line's width. |
+| `--grating` | Five scenes: a far lamp overhead, a turned card, a near lamp, the second order alone, and the defaults' strip lamp with roughness. Each pixel's light against the per-wavelength sum is worst **1.8e-3** of the brightest (bound 1e-2). Its dominant wavelength against *d*·\|s·g\|/*m* over 470–600 nm is worst **0.83** of a bound that grows with the line's width. |
 | `--mirror` | With no groove, the highlight is at the mirror point (L_z E + E_z L)/(E_z + L_z) for near and far eyes and lamps on a turned card: worst **0.001 px** (bound 0.01). |
 | `--groove` | The mirror's colour against J₀² through the matching functions, at six depths from 0 to 400 nm: worst **5.7e-6**. It is white at 0 nm and magenta at 210 nm. |
 | `--lamp` | Purity falls as the lamp grows from 1° to 16°. Roughness *r* matches a lamp √(1 + (h_z r)²)° wide, dimmer by the ratio of the areas, to **3.0e-7**. The absolute light matches the spectrum to **2.2e-3**. |
@@ -120,12 +120,12 @@ The harness's reference never uses the plugin's table, its spectral lines or its
 | `--smooth` | Halving Tilt's step halves the largest frame-to-frame change (ratio **1.95**). |
 | `--clock` | A host clock 499,217,238 ms in renders the same take as one starting at 0 s, in Free, Beat and Bar. |
 | `--state` | The host's GL state comes back in all six areas, across a resize and a rebuild of the colour table. |
-| `--motion`, `--controls`, `--cues`, `--names` | No GL needed: the motion's phase and shapes, every slider's ends and middle against the numbers above, cue sheets, and 33 parameter names. |
+| `--motion`, `--controls`, `--cues`, `--names` | No GL needed: the motion's phase and shapes, every slider's ends and middle against the numbers above, cue sheets, and 36 parameter names. |
 | `--negative` | **17** deliberately wrong models, **17** caught. |
 | `tools/mutate.sh` | **29** one-character mutants (21 in the GLSL), **29** caught. |
 | `tools/sweep.py` | All **31** controls change the picture. |
 | shaders | All 3 compile through `glslc`, not only through Apple's driver. |
-| the bundle | Universal (`x86_64 arm64`), exports `plugMain` and ad-hoc signs. `oxbow`, a stand-in host, reads `SW Holofoil` / `HF01` / `effect` with 33 parameters and renders 120 frames through `plugMain`. |
+| the bundle | Universal (`x86_64 arm64`), exports `plugMain` and ad-hoc signs. `oxbow`, a stand-in host, reads `SW Holofoil` / `HF01` / `effect` with 36 parameters and renders 120 frames through `plugMain`. |
 
 ### Cost
 
@@ -196,3 +196,7 @@ Render a frame of your own:
 ## License
 
 MIT. See [LICENSE](LICENSE) and [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
+
+<!-- attributions:start -->
+This project is built on other people's work — see [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
+<!-- attributions:end -->
