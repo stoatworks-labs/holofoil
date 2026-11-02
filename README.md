@@ -18,6 +18,42 @@ Trading-card foil, as an FFGL effect for [Resolume](https://resolume.com) Arena 
 
 [`docs/tip.mp4`](docs/tip.mp4) shows one cycle of the default motion: the card tipping toward and away, 12° each way, every 5 s. It plays holo, reverse holo, cracked ice and sparkle side by side.
 
+<!-- downloads:start -->
+
+## Download
+
+**[v0.1.0](https://github.com/stoatworks-labs/holofoil/releases/tag/v0.1.0)** — prebuilt for macOS and Windows. Pick your platform:
+
+<details>
+<summary><b>macOS</b> — Universal (Apple Silicon + Intel)</summary>
+
+| Build | Download | Size |
+| --- | --- | --- |
+| Universal (Apple Silicon + Intel) · .dmg disk image | [`holofoil-0.1.0-macos-universal.dmg`](https://github.com/stoatworks-labs/holofoil/releases/download/v0.1.0/holofoil-0.1.0-macos-universal.dmg) | 224 KB |
+| Universal (Apple Silicon + Intel) · .zip archive | [`holofoil-macos-universal.zip`](https://github.com/stoatworks-labs/holofoil/releases/latest/download/holofoil-macos-universal.zip) | 186 KB |
+
+</details>
+
+<details>
+<summary><b>Windows</b> — x64</summary>
+
+| Build | Download | Size |
+| --- | --- | --- |
+| x64 · .exe installer | [`holofoil-0.1.0-windows-x86_64-setup.exe`](https://github.com/stoatworks-labs/holofoil/releases/download/v0.1.0/holofoil-0.1.0-windows-x86_64-setup.exe) | 227 KB |
+| x64 · .zip archive | [`holofoil-windows-x86_64.zip`](https://github.com/stoatworks-labs/holofoil/releases/latest/download/holofoil-windows-x86_64.zip) | 119 KB |
+
+</details>
+
+All builds, checksums and release notes: [github.com/stoatworks-labs/holofoil/releases](https://github.com/stoatworks-labs/holofoil/releases).
+
+macOS builds are signed and notarised and open normally. The Windows builds are unsigned, so SmartScreen warns once.
+
+<!-- downloads:end -->
+
+## Video
+
+[![Holofoil: holographic trading-card foil under any clip, for Resolume](docs/video-thumb.png)](https://www.youtube.com/watch?v=Lustt96QYow)
+
 ## The one idea
 
 **Holographic foil is a reflection grating: aluminium embossed with ridges about a micron apart.** Light of wavelength λ leaves it in order *m* only where the part of (v + l) in the surface is *m*λ/*d* along the grating's direction *g*:
