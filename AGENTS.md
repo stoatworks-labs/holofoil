@@ -129,13 +129,14 @@ ATTRIBUTIONS.md is generated from stoatworks-backend and has no section for thes
 - GL state
 - every slider's range
 - a stand-in host (oxbow) loads it, reads 36 parameters and renders 120 frames
+- on Windows, Resolume Arena 7.27.1 (win-lab, software rendering) loads the release workflow's DLL, reads all 36 parameters as declared, renders with a clean log, and every control that can act on a still changes its picture (plugin-bench's `arena/expect/holofoil.json`, twice: 9 passed, 0 failed, 1 skipped)
 
 **Assumed, not measured:**
 
 - That this is what a real card looks like. No real foil card has been photographed and compared. The optics are textbook; the finish recipes (pitch, depth, pattern, cell size) come from generic hologram literature (dot-matrix pixels 65 µm, 1000–1300 lines/mm, 120–210 nm deep), not from trading cards.
 - That Raman–Nath's shape is close enough, and that one lamp is enough.
-- That Resolume calls it as oxbow does. It has never been loaded in Resolume.
-- That the Windows build compiles. It has not been tried.
+- That Resolume on macOS calls it as Arena on Windows and oxbow do. It has never been loaded in Resolume on a Mac.
+- That Motion follows Arena's transport. The gate's carrier is a still, so Motion Depth, Motion Rate and Motion Sync are only checked offline.
 
 ## Would this hold on another rasteriser, at another raster?
 
@@ -197,8 +198,8 @@ The weakest live controls are Motion Rate (0.15 mean 8-bit at 320×180), Corner 
 
 ## Not done
 
-- **Never loaded into Resolume**, on either platform.
-- **Not released yet:** no website entry, user guide, presets or browser demo. The Windows build compiles in CI and nowhere else.
+- **Never loaded into Resolume on macOS.** On Windows, only on software rendering (win-lab).
+- **No presets or browser demo.**
 - **Not modelled:**
   - thin-film iridescence
   - polarisation

@@ -7,7 +7,7 @@ Trading-card holographic foil for Resolume Arena/Avenue, as an FFGL effect.
 - **Patterns:** Rainbow, Crosshatch, Cosmos, Cracked Ice and Sparkle.
 - **Build:** C++/GLSL, CMake MODULE → universal `.bundle` (macOS).
 - **Identity:** MIT. ID `HF01`, display name `SW Holofoil`.
-- **Status:** public at github.com/stoatworks-labs/holofoil since 2026-11-02; v0.1.0 is being released.
+- **Status:** public at github.com/stoatworks-labs/holofoil since 2026-11-02; v0.1.0 released 2026-11-02.
 
 Read `AGENTS.md` before changing the optics, the colour table, the lamp's covariance, a default or any tolerance in the harness. The spec is `~/Projects/resolume/specs/SPEC-holofoil.md`.
 
@@ -74,7 +74,7 @@ Read `AGENTS.md` before changing the optics, the colour table, the lamp's covari
 
 ## Not done yet
 
-- Never loaded into Resolume. The Windows build compiles in CI and nowhere else. No presets or demo.
+- Never loaded into Resolume on macOS. On Windows the fleet's Arena gate passes on Arena 7.27.1 (plugin-bench, `arena/expect/holofoil.json`). No presets or demo.
 
 ## Diagnostics
 

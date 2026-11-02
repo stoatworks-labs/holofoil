@@ -6,7 +6,7 @@
 > - **Areas and passthrough:** a reverse holo is the exact complement of a holo. At zero Mix the clip comes through bit for bit.
 > - **The checks can fail:** 17 negative controls and 29 one-character mutants show it.
 >
-> It has **never been loaded into Resolume**; a stand-in host has loaded it, as Status below says. It is **unreleased**. Full details are under [Status](#status).
+> On Windows it has been loaded into **Resolume Arena 7.27.1**, and every control that can act on a still picture changed Arena's picture. It has **never been loaded into Resolume on macOS**. Full details are under [Status](#status).
 
 Trading-card foil, as an FFGL effect for [Resolume](https://resolume.com) Arena and Avenue. Put the foil in the art window (a holo), around it (a reverse holo) or over the whole card. Emboss it plain, crosshatched, with discs, in shards or as glitter. Then tip the card under a lamp. The colour comes from a diffraction grating: each wavelength leaves the foil at its own angle, so the rainbow sweeps as the card moves.
 
@@ -127,6 +127,15 @@ The harness's reference never uses the plugin's table, its spectral lines or its
 | shaders | All 3 compile through `glslc`, not only through Apple's driver. |
 | the bundle | Universal (`x86_64 arm64`), exports `plugMain` and ad-hoc signs. `oxbow`, a stand-in host, reads `SW Holofoil` / `HF01` / `effect` with 36 parameters and renders 120 frames through `plugMain`. |
 
+### In Resolume, on Windows
+
+The fleet's Arena gate ran the release workflow's own Windows build in **Resolume Arena 7.27.1** on win-lab, a test machine with no GPU (Mesa's software renderer), twice. Both runs: **9 passed, 0 failed, 1 skipped**.
+
+- The DLL loads, registers as `HF01` (an effect) and appears in Arena's effect list.
+- All 37 parameters Arena shows (its own Opacity and the plugin's 36) match their names, order, types, ranges and defaults. The two names at FFGL's 16-character limit arrive whole.
+- It renders, Arena's log has no shader or error lines, and Arena stays up.
+- Against a still picture, **all 28 controls that can act on one** changed Arena's picture. The skip is Motion Depth, Motion Rate and Motion Sync, which only set how the card moves over time: two grabs of a moving card differ at any setting. `hftest --motion` and `--clock` check them offline.
+
 ### Cost
 
 GPU time per frame on an M4 Max at 4K:
@@ -140,7 +149,7 @@ At 1080p every pattern is under 0.3 ms, and automating Groove Depth costs 0.57 m
 
 ### Not established
 
-- **Never loaded into Resolume** on either platform. No Windows build has been made.
+- **Never loaded into Resolume on macOS.** On Windows it has run only on software rendering, against a still picture: nobody has watched Motion Sync follow Arena's transport or timed it on a GPU there.
 - Not yet **seen by eye** beside a real foil card. The measurements show the plugin does what the optics say; they do not show the optics are the right ones for a given card. Finish pitches and groove depths are typical values for embossed holograms, not measured from any trading card.
 - **Patterns are point-sampled.** A crosshatch at its natural scale is about 8 px a period at 720 wide and aliases on smaller rasters. Raise Pattern Scale there.
 - **Light comes from one lamp, with no room around it.** A mostly-mirror foil, such as cold foil, shows nothing away from the lamp's reflection.
