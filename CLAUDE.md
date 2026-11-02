@@ -7,7 +7,7 @@ Trading-card holographic foil for Resolume Arena/Avenue, as an FFGL effect.
 - **Patterns:** Rainbow, Crosshatch, Cosmos, Cracked Ice and Sparkle.
 - **Build:** C++/GLSL, CMake MODULE → universal `.bundle` (macOS).
 - **Identity:** MIT. ID `HF01`, display name `SW Holofoil`.
-- **Status:** local and unreleased, private, no remote. Releasing needs Allan's go-ahead.
+- **Status:** public at github.com/stoatworks-labs/holofoil since 2026-11-02; v0.1.0 is being released.
 
 Read `AGENTS.md` before changing the optics, the colour table, the lamp's covariance, a default or any tolerance in the harness. The spec is `~/Projects/resolume/specs/SPEC-holofoil.md`.
 
@@ -52,7 +52,7 @@ Read `AGENTS.md` before changing the optics, the colour table, the lamp's covari
 - **The checks can fail:** `--negative` (17 wrong models) and `tools/mutate.sh` (29 mutants; `tools/mutate.sh TEXT` runs only the ones whose description contains TEXT).
 - **No dead controls:** `python3 tools/sweep.py` sweeps 31 controls, all live. `--bare` lists the three that only act in context.
 - **Render cost:** `./build/hftest --bench`.
-- **No CI:** the repo is private, and the house rule is no Actions on private repos. `tools/glslc.sh` and `hftest --offline` are what a public repo's CI would call.
+- **CI** (`.github/workflows/ci.yml`): macOS arm64 build, `hftest --list` and `--offline`, glslc; a Windows x64 build through vcpkg's GLEW. No pixel checks: the runner has no GL.
 
 ## Notes
 
@@ -74,7 +74,7 @@ Read `AGENTS.md` before changing the optics, the colour table, the lamp's covari
 
 ## Not done yet
 
-- Never loaded into Resolume. No Windows build. No presets, demo, GitHub repo or release.
+- Never loaded into Resolume. The Windows build compiles in CI and nowhere else. No presets or demo.
 
 ## Diagnostics
 

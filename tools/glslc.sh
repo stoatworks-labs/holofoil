@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 #
 # Every shader through glslc, the one shader check that needs no GL driver.
-# Called by tools/verify.sh, and written to be what a CI runner calls if this
-# repo ever has one (it is private, so it has none): a runner with no
-# accelerated GL cannot compile a shader through a driver, and this is how it
-# would cover the shaders (hftest --offline covers the CPU half).
+# Called by tools/verify.sh and by CI (.github/workflows/ci.yml): a runner
+# with no accelerated GL cannot compile a shader through a driver, and this is
+# how it covers the shaders (hftest --offline covers the CPU half).
 #
 #     tools/glslc.sh          exit 0 when every shader compiles, or glslc is absent
 #     GLSLC_REQUIRED=1 tools/glslc.sh   ...and a missing glslc is a failure (CI)

@@ -41,8 +41,7 @@ Everything the plugin draws is that equation, per pixel, in linear light, for an
 - **Name and id.** `SW Holofoil`, `HF01`, bundle `com.stoatworks.ffgl.holofoil`, harness `hftest`.
   - Not `foil`: `~/Projects/presentation/foil` exists.
   - HF01 was checked free against all 136 ids in `~/Projects/*/*/source` and `~/dev`.
-  - Built in `~/dev/holofoil`, then moved to `~/Projects/resolume/holofoil` (slitscan's route).
-  - **No GitHub repo, no push, no release.** That needs Allan's go-ahead.
+  - Built in `~/dev/holofoil`, then moved to `~/Projects/resolume/holofoil` (slitscan's route) and made public at github.com/stoatworks-labs/holofoil the same day, on Allan's go-ahead.
 - **Effect, not mixer; not lenticular.** Lenticular (LN01) is a mixer that picks one of two layers through a lens sheet. Holofoil is an effect on one clip and throws colour from a grating.
   - Shared with lenticular: the card stays put while the eye and lamp move round it, distances are in picture widths, and the eye is at (cos Ty sin Tx, sin Ty, cos Ty cos Tx).
   - The code is new.
@@ -73,9 +72,7 @@ Everything the plugin draws is that equation, per pixel, in linear light, for an
 - **No trig in the GLSL.** The grating's and the crosshatch's directions and tan(Facet Tilt) come from the CPU. A cell's random direction uses `cosSinTurns()`, a quarter-turn reduction plus a Taylor series good to 2e-9. `verify.sh` greps for trig.
 - **PCG hash, not `fract(sin(...))`:** the same cells on every GPU.
 - **The test hooks ship.** `uniform int Hooks` and its branches are in the shipped shader, so the harness measures the real one. Every branch is uniform, and the cost is in the bench (0.53 ms at 4K with them).
-- **No CI.** This repo is private for now, and the house rule is no Actions on private repos.
-  - `tools/glslc.sh` and `hftest --offline` are written so a public repo's CI could call them.
-  - `vcpkg.json` is there for a Windows build that has not been made.
+- **CI has no GL.** `.github/workflows/ci.yml` builds for macOS (arm64) and Windows (x64, vcpkg's GLEW). The macOS runner cannot make an accelerated GL context, so it runs `hftest --list`, `hftest --offline` and `tools/glslc.sh`; the pixel checks run in `tools/verify.sh`, on a Mac.
 - **The About block** has no guide, page or repo link while unpublished (`StoatworksAbout.h` says so). It shows the text line and Support the work, 33 parameters in all. Regenerate it with the backend's `sync-about.py` when the repo goes public.
 
 ## The traps actually hit
@@ -194,7 +191,7 @@ The weakest live controls are Motion Rate (0.15 mean 8-bit at 320×180), Corner 
 ## Not done
 
 - **Never loaded into Resolume**, on either platform.
-- **No Windows build, no CI, no GitHub repo, no release, no website entry, no user guide, no presets, no browser demo.**
+- **Not released yet:** no website entry, user guide, presets or browser demo. The Windows build compiles in CI and nowhere else.
 - **Not modelled:**
   - thin-film iridescence
   - polarisation

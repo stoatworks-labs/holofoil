@@ -97,7 +97,7 @@ The defaults:
 
 ## Status
 
-**v0.1.0, local and unreleased** (2026-11-02). There is no GitHub repo, release, website entry or user guide. Releasing needs Allan's go-ahead.
+**v0.1.0** (2026-11-02), public at [github.com/stoatworks-labs/holofoil](https://github.com/stoatworks-labs/holofoil). CI builds it for macOS and Windows on every push.
 
 ### Measured offline, on macOS
 
@@ -150,6 +150,10 @@ At 1080p every pattern is under 0.3 ms, and automating Groove Depth costs 0.57 m
 macOS, universal (Apple Silicon and Intel):
 
 ```bash
+git clone --recurse-submodules https://github.com/stoatworks-labs/holofoil
+```
+
+```bash
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 ```
 
@@ -162,6 +166,8 @@ cmake --install build
 ```
 
 The last one copies `Holofoil.bundle` into `~/Documents/Resolume Arena/Extra Effects`. Restart Arena and it's under Effects as **SW Holofoil**.
+
+Windows needs Visual Studio 2022 and vcpkg (for GLEW); see `.github/workflows/ci.yml`.
 
 ## Building and testing
 
