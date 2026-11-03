@@ -10,6 +10,8 @@
 
 Trading-card foil, as an FFGL effect for [Resolume](https://resolume.com) Arena and Avenue. Put the foil in the art window (a holo), around it (a reverse holo) or over the whole card. Emboss it plain, crosshatched, with discs, in shards or as glitter. Then tip the card under a lamp. The colour comes from a diffraction grating: each wavelength leaves the foil at its own angle, so the rainbow sweeps as the card moves.
 
+The [project page](https://stoatworks-labs.com/software/holofoil/) has the downloads, the [user guide](https://stoatworks-labs.com/software/holofoil/guide/) and the video.
+
 ![The same trading-card clip in four rows: holo, reverse holo, full foil and sparkle, each at Tilt Y 0, +5 and +10 degrees. In the holo row a band of spectral colour, red below and blue above, climbs through the art window as the card tips. In reverse holo and full foil the frame and text box take the colour too. Sparkle is a fine glitter over the whole card.](docs/finishes.png)
 
 <sub>Rendered by `hftest`, the offline harness, not captured from Resolume. The harness's own card, the art frozen, under the default strip lamp. `tools/figures.py` makes these.</sub>
